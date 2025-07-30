@@ -1,49 +1,74 @@
-import { ScrollView, Text } from "react-native";
+// app/index.tsx
+import React from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'; 
 
 export default function Index() {
   return (
-    <ScrollView contentContainerStyle={{ padding: 20 }}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>10 MaterialCommunityIcons</Text>
 
-      <Text style={{ fontFamily: "bigshoulders", fontSize: 24 }}>
-        Diah Rahmatillah{"\n"}105841104822
-      </Text>
-
-      <Text style={{ fontFamily: "darkergrotesque", fontSize: 24 }}>
-        Juliani{"\n"}105841104922
-      </Text>
-
-      <Text style={{ fontFamily: "eduhand", fontSize: 24 }}>
-        Azzah Aulia Syarif{"\n"}105841105022
-      </Text>
-
-      <Text style={{ fontFamily: "inriasans", fontSize: 24 }}>
-        Syauqiyah Mujahidah Yahya{"\n"}105841105122
-      </Text>
-
-      <Text style={{ fontFamily: "playwrite", fontSize: 24 }}>
-        Mar'atul Azizah{"\n"}105841105222
-      </Text>
-
-      <Text style={{ fontFamily: "simonetta", fontSize: 24 }}>
-        Fikrah Lejahtegis{"\n"}105841105322
-      </Text>
-
-      <Text style={{ fontFamily: "sourgummy", fontSize: 24 }}>
-        Alya Ananda{"\n"}105841105422
-      </Text>
-
-      <Text style={{ fontFamily: "sunshiney", fontSize: 24 }}>
-        M. Fikri Haikal Ayatullah{"\n"}105841105522
-      </Text>
-
-      <Text style={{ fontFamily: "girlnextdoor", fontSize: 24 }}>
-        Muh. Dirham Rahim{"\n"}105841105622
-      </Text>
-
-      <Text style={{ fontFamily: "tiltprism", fontSize: 24 }}>
-        Muh. Ilham Akbar{"\n"}105841105722
-      </Text>
-
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="application-import" size={28} color="#000" />
+        <Text style={styles.label}>Import</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="application-settings" size={28} color="#000" />
+        <Text style={styles.label}>Settings</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="approximately-equal-box" size={28} color="#000" />
+        <Text style={styles.label}>Approx Equal</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="apps" size={28} color="#000" />
+        <Text style={styles.label}>Apps</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="archive" size={28} color="#000" />
+        <Text style={styles.label}>Archive</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="archive-arrow-down" size={28} color="#000" />
+        <Text style={styles.label}>Archive ↓</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="archive-remove" size={28} color="#000" />
+        <Text style={styles.label}>Archive Remove</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="archive-edit" size={28} color="#000" />
+        <Text style={styles.label}>Archive Edit</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="archive-lock-open" size={28} color="#000" />
+        <Text style={styles.label}>Unlocked Archive</Text>
+      </View>
+      <View style={styles.item}>
+        <MaterialCommunityIcons name="archive-minus" size={28} color="#000" />
+        <Text style={styles.label}>Archive -</Text>
+      </View>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: '600',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  item: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  label: {
+    marginLeft: 10,
+    fontSize: 16,
+  },
+});
