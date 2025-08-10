@@ -1,7 +1,7 @@
-import { Link } from 'expo-router';
-import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Link } from 'expo-router';
+import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
 
 const users = [
   { id: '1', name: 'Maratul azizah' },
@@ -16,10 +16,9 @@ const users = [
   { id: '10', name: 'Arsifah Ainun aulia' },
 ];
 
-export default function TabHome() {
+export default function HomePage() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Judul dengan Gradien */}
       <LinearGradient colors={['#4facfe', '#00f2fe']} style={styles.header}>
         <Text style={styles.title}>Daftar Mahasiswa Kelas B</Text>
       </LinearGradient>
@@ -44,45 +43,15 @@ export default function TabHome() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: '#eef5ff',
-  },
-  header: {
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    borderRadius: 12,
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',
-  },
+  container: { padding: 20, backgroundColor: '#eef5ff' },
+  header: { paddingVertical: 15, paddingHorizontal: 10, borderRadius: 12, marginBottom: 20 },
+  title: { fontSize: 26, fontWeight: 'bold', color: 'white', textAlign: 'center' },
   item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 15,
-    padding: 15,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 3 },
+    flexDirection: 'row', alignItems: 'center', marginBottom: 15, padding: 15,
+    backgroundColor: '#fff', borderRadius: 12, elevation: 3,
+    shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 5, shadowOffset: { width: 0, height: 3 },
   },
-  itemPressed: {
-    backgroundColor: '#f0f8ff',
-    transform: [{ scale: 0.98 }],
-  },
-  icon: {
-    marginRight: 15,
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: '500',
-    color: '#333',
-  },
+  itemPressed: { backgroundColor: '#f0f8ff', transform: [{ scale: 0.98 }] },
+  icon: { marginRight: 15 },
+  name: { fontSize: 18, fontWeight: '500', color: '#333' },
 });
