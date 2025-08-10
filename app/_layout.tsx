@@ -2,6 +2,8 @@ import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { Touchable, TouchableOpacity, View } from "react-native";
+import Entypo from '@expo/vector-icons/Entypo';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,5 +31,35 @@ export default function RootLayout() {
     return null;
   }
 
-  return <Stack />;
+//   return <Stack screenOptions={{
+//     header : ({ navigation }) => (
+//       <View style={{ 
+//         height: 60, 
+//         backgroundColor: '#f8f8f8',
+//         justifyContent: 'center',
+//         alignItems: 'flex-start',
+//       }}>
+//         <TouchableOpacity onPress={() =>{
+//           navigation.navigate('index');
+//         }} style={{ 
+//           width: 60,
+//           marginLeft: 10,
+//         }} >
+//           <Entypo name="home" size={24} color="black"/>
+//         </TouchableOpacity>
+//         </View>
+//     ),
+//   }}/>;
+// }
+return (
+  <Stack>
+    <Stack.Screen 
+      name="(tabs)" 
+      options={{ 
+        headerShown: false,
+    
+      }} 
+    />
+  </Stack>
+);
 }
