@@ -1,210 +1,88 @@
-import React from 'react';
-import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
+import { Link } from 'expo-router';
+import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export default function Home() {
+const users = [
+  { id: '1', name: 'Maratul azizah' },
+  { id: '2', name: 'Fikrah Lejahtegis' },
+  { id: '3', name: 'Alya Anandha' },
+  { id: '4', name: 'M Fikri Haikalayatullah' },
+  { id: '5', name: 'Muh Dirham Rahim' },
+  { id: '6', name: 'Zaskya aulia ashar' },
+  { id: '7', name: 'Muh Ilham akbar' },
+  { id: '8', name: 'Zelvia' },
+  { id: '9', name: 'A Diftha Rameyza kailah' },
+  { id: '10', name: 'Arsifah Ainun aulia' },
+];
+
+export default function TabHome() {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Universitas Muhammadiyah Makassar</Text>
-        <Text style={styles.subtitle}>UNISMUH MAKASSAR</Text>
-      </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* Judul dengan Gradien */}
+      <LinearGradient colors={['#4facfe', '#00f2fe']} style={styles.header}>
+        <Text style={styles.title}>Daftar Mahasiswa Kelas B</Text>
+      </LinearGradient>
 
-      
-      <View style={styles.section}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require('../../assets/images/unismuh1.png')}
-            style={styles.image}
-            resizeMode="cover"
-            onLoad={() => console.log('✅ Unismuh1.png berhasil dimuat!')}
-            onError={(error) => {
-              console.log('❌ Gagal memuat unismuh1.png:', error);
-            }}
-          />
-          <View style={styles.imageOverlay}>
-            <Text style={styles.imageLabel}>🏛 Kampus Unismuh Makassar</Text>
-          </View>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.description}>
-            Unismuh Makassar adalah perguruan tinggi swasta yang berkomitmen dalam menghasilkan lulusan yang berkualitas, berakhlak mulia, dan berdaya saing tinggi. Dengan visi menjadi universitas unggul yang berbasis nilai-nilai Islam, Unismuh Makassar terus mengembangkan program pendidikan yang inovatif dan relevan dengan kebutuhan zaman.
-          </Text>
-        </View>
-      </View>
-
-      
-      <View style={styles.section}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require('../../assets/images/unismuh2.png')}
-            style={styles.image}
-            resizeMode="cover"
-            onLoad={() => console.log('✅ Unismuh2.png berhasil dimuat!')}
-            onError={(error) => {
-              console.log('❌ Gagal memuat unismuh2.png:', error);
-            }}
-          />
-          <View style={styles.imageOverlay}>
-            <Text style={styles.imageLabel}>🏆 Akreditasi Unggul Unismuh</Text>
-          </View>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.description}>
-            UNISMUH MAKASSAR MERAIH AKREDITASI UNGGUL! Pencapaian gemilang ini merupakan bukti komitmen universitas dalam memberikan pendidikan berkualitas tinggi. Dengan akreditasi unggul, Unismuh Makassar semakin mantap dalam melangkah maju sebagai institusi pendidikan yang terdepan di Indonesia Timur.
-          </Text>
-        </View>
-      </View>
-
-      
-      <View style={styles.infoSection}>
-        <Text style={styles.infoTitle}>Keunggulan Unismuh Makassar:</Text>
-        <View style={styles.bulletPoint}>
-          <Text style={styles.bullet}>• </Text>
-          <Text style={styles.bulletText}>Akreditasi Unggul</Text>
-        </View>
-        <View style={styles.bulletPoint}>
-          <Text style={styles.bullet}>• </Text>
-          <Text style={styles.bulletText}>Berbasis Nilai-nilai Islam</Text>
-        </View>
-        <View style={styles.bulletPoint}>
-          <Text style={styles.bullet}>• </Text>
-          <Text style={styles.bulletText}>Fasilitas Modern dan Lengkap</Text>
-        </View>
-        <View style={styles.bulletPoint}>
-          <Text style={styles.bullet}>• </Text>
-          <Text style={styles.bulletText}>Dosen Berkualitas dan Berpengalaman</Text>
-        </View>
-        <View style={styles.bulletPoint}>
-          <Text style={styles.bullet}>• </Text>
-          <Text style={styles.bulletText}>Program Studi Terakreditasi</Text>
-        </View>
-      </View>
+      {users.map((user) => (
+        <Link
+          key={user.id}
+          href={{
+            pathname: '/user/[id]',
+            params: { id: user.id },
+          }}
+          asChild
+        >
+          <Pressable style={({ pressed }) => [styles.item, pressed && styles.itemPressed]}>
+            <Ionicons name="person-circle" size={40} color="#4facfe" style={styles.icon} />
+            <Text style={styles.name}>{user.name}</Text>
+          </Pressable>
+        </Link>
+      ))}
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
+    padding: 20,
+    backgroundColor: '#eef5ff',
   },
   header: {
-    backgroundColor: '#1670baff',
-    paddingVertical: 30,
-    paddingHorizontal: 20,
-    alignItems: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderRadius: 12,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: 5,
-    fontFamily: 'fontBas',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#fff',
-    fontWeight: '600',
-    fontFamily: 'Font2-Cursive-Bold',
-  },
-  section: {
-    backgroundColor: '#fff',
-    margin: 15,
-    borderRadius: 12,
-    overflow: 'hidden',
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-  },
-  
-  imageContainer: {
-    width: '100%',
-    aspectRatio: 4 / 2, 
-    backgroundColor: '#ffffff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  image: {
-    width: '50%',
-    height: '90%',
-    backgroundColor: '#f8f9fa',
-  },
-  imageOverlay: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: '#1670baff',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-  },
-  imageLabel: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-    fontFamily: 'fontBas',
+    color: 'white',
     textAlign: 'center',
   },
-  textContainer: {
-    padding: 20,
-  },
-  description: {
-    fontSize: 14,
-    lineHeight: 22,
-    color: '#333',
-    textAlign: 'justify',
-    fontFamily: 'fontBas',
-  },
-  infoSection: {
-    backgroundColor: '#fff',
-    margin: 15,
-    padding: 20,
-    borderRadius: 12,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-  },
-  infoTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1670baff',
-    marginBottom: 15,
-    fontFamily: 'fontBas',
-  },
-  bulletPoint: {
+  item: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    marginBottom: 8,
+    alignItems: 'center',
+    marginBottom: 15,
+    padding: 15,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 3 },
   },
-  bullet: {
-    fontSize: 16,
-    color: '#1670baff',
-    fontWeight: 'bold',
-    marginRight: 5,
+  itemPressed: {
+    backgroundColor: '#f0f8ff',
+    transform: [{ scale: 0.98 }],
   },
-  bulletText: {
-    flex: 1,
-    fontSize: 14,
+  icon: {
+    marginRight: 15,
+  },
+  name: {
+    fontSize: 18,
+    fontWeight: '500',
     color: '#333',
-    fontFamily: 'fontBas',
   },
 });
